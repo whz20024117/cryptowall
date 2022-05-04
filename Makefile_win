@@ -19,5 +19,5 @@ all:
 	# $(CXX) -o $(DECRYPTOR) $(DECRYPTOR_SRC) $(CXXFLAGS) /link $(LIBS)
 
 clean:
-	rm -rf $(BUILD)
 	rm *.obj
+	rm -rf $(BUILD)
