@@ -1,0 +1,23 @@
+CXX=cl
+CXXFLAGS=/EHsc /I.
+# LDFLAGS=/LIBPATH:cryptopp/Win32/Output/Release/cryptopp.lib
+LIBS=cryptopp/Win32/Output/Release/cryptlib.lib
+
+MALWARE_SRC=$(wildcard src/malware/*.cc)
+DECRYPTOR_SRC=src/decryptor.cc \
+	      src/malware/file_encryptor.cc \
+	      src/malware/util.cc
+
+BUILD=build
+MALWARE=$(BUILD)/DailyAllowance
+DECRYPTOR=$(BUILD)/decryptor
+
+all:
+	mkdir -p $(BUILD)
+	$(CXX) -o $(MALWARE) $(MALWARE_SRC) $(CXXFLAGS) /link $(LIBS)
+	# mkdir -p $(BUILD)
+	# $(CXX) -o $(DECRYPTOR) $(DECRYPTOR_SRC) $(CXXFLAGS) /link $(LIBS)
+
+clean:
+	rm -rf $(BUILD)
+	rm *.obj
